@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop/models/product_list.dart';
 import 'package:shop/pages/products_overview_page.dart';
 import 'package:shop/utils/app_routes.dart';
 
@@ -13,28 +15,29 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: "Lato",
-        colorScheme: const ColorScheme(
-          brightness: Brightness.light,
-          primary: Colors.purple,
-          onPrimary: Colors.white,
-          secondary: Colors.deepOrange,
-          onSecondary: Colors.black,
-          error: Colors.red,
-          onError: Colors.black,
-          background: Colors.white,
-          onBackground: Colors.black,
-          surface: Colors.pink,
-          onSurface: Colors.black,
+    return ChangeNotifierProvider(
+      create: (_) => ProductList(),
+      child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: "Lato",
+          colorScheme: const ColorScheme(
+            brightness: Brightness.light,
+            primary: Colors.purple,
+            onPrimary: Colors.white,
+            secondary: Colors.deepOrange,
+            onSecondary: Colors.black,
+            error: Colors.red,
+            onError: Colors.black,
+            background: Colors.white,
+            onBackground: Colors.black,
+            surface: Colors.pink,
+            onSurface: Colors.black,
+          ),
         ),
+        debugShowCheckedModeBanner: false,
+        routes: {AppRoutes.productDetail: (ctx) => const ProductDetailPage()},
+        home: const ProductsOverviewPage(),
       ),
-      debugShowCheckedModeBanner: false,
-      routes: {
-        AppRoutes.productDetail: (ctx) => const ProductDetailPage()
-      },
-      home: ProductsOverviewPage(),
     );
   }
 }

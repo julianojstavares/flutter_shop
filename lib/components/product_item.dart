@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shop/models/product.dart';
-import 'package:shop/pages/product_detail_page.dart';
 import 'package:shop/utils/app_routes.dart';
 
 class ProductItem extends StatelessWidget {
@@ -24,6 +23,7 @@ class ProductItem extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {},
             icon: const Icon(Icons.shopping_cart),
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
         child: GestureDetector(
