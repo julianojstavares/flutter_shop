@@ -4,7 +4,8 @@ import 'package:shop/models/product.dart';
 import 'package:shop/utils/app_routes.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  final int id;
+  const ProductItem({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
