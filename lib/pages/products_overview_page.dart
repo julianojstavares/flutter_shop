@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../components/product_grid.dart';
+import '../models/cart.dart';
 
 enum FilterOptions { favorite, all }
 
@@ -12,7 +14,6 @@ class ProductsOverviewPage extends StatefulWidget {
 
 class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
   bool _showFavoriteOnly = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +39,16 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
                 _showFavoriteOnly = false;
               }
             }),
+          ),
+          Consumer<Cart>(
+            builder: (ctx, cart, child) => Badge.count(
+              alignment: Alignment.centerLeft,
+              count: cart.itemsCount,
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.shopping_cart),
+              ),
+            ),
           ),
         ],
       ),
