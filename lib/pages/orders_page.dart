@@ -16,11 +16,25 @@ class OrdersPage extends StatelessWidget {
         title: const Text("Meus pedidos"),
       ),
       drawer: const AppDrawer(),
-      body: ListView.builder(
-        itemCount: orders.itemsCount,
-        itemBuilder: (ctx, i) => OrderWidget(
-          order: orders.items[i],
-        ),
+      body: ListWidget(orders: orders),
+    );
+  }
+}
+
+class ListWidget extends StatelessWidget {
+  const ListWidget({
+    super.key,
+    required this.orders,
+  });
+
+  final OrderList orders;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: orders.itemsCount,
+      itemBuilder: (ctx, i) => OrderWidget(
+        order: orders.items[i],
       ),
     );
   }
